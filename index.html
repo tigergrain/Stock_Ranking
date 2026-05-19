@@ -713,7 +713,7 @@
       email
     };
 
-    fetch(N8N_WEBHOOK, {
+    fetch('https://rocky51502.n8n-wsk.com/webhook/sector-analysis', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
