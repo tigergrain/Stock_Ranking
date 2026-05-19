@@ -693,7 +693,7 @@
 
   document.querySelector('.submit-btn').addEventListener('click', function() {
     const sector = document.querySelector('.sector-btn.active .sector-name')?.textContent || '';
-    const rankBy = document.querySelector('.two-col select:nth-child(1)')?.value || '';
+    const rankBy = document.querySelectorAll('.two-col select')[0]?.value || '';
     const timeframe = document.querySelectorAll('.two-col select')[1]?.value || '';
     const stockCount = document.getElementById('sliderVal').textContent;
     const name = document.querySelector('input[type="text"]').value;
@@ -704,34 +704,54 @@
       return;
     }
 
-    const payload = {
-      sector,
-      rankBy,
-      timeframe,
-      stockCount,
-      name,
-      email
-    };
+    const btn = document.querySelector('.submit-btn');
+    btn.innerHTML = '⏳ Sending...';
+    btn.disabled = true;
+    btn.style.opacity = '0.8';
 
-    fetch('https://rocky51502.n8n-wsk.com/webhook/sector-analysis', {
+    const payload = { sector, rankBy, timeframe, stockCount, name, email };
+
+    // Try normal fetch first, fallback to no-cors for CORS issues
+    fetch(N8N_WEBHOOK, {
       method: 'POST',
+      mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     })
     .then(() => showSuccess())
-    .catch(err => console.error('Webhook error:', err));
+    .catch(() => showError('Connection failed. Please check n8n is active.'));
   });
 
   function showSuccess() {
     const btn = document.querySelector('.submit-btn');
-    btn.textContent = '✓ Analysis Running...';
-    btn.style.background = 'linear-gradient(135deg, #2d9e52, #3dbd62)';
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.innerHTML = '✓ Analysis Running — Check Your Email!';
+    btn.style.background = 'linear-gradient(135deg, #1a6b35, #2d9e52, #3dbd62)';
     btn.style.color = '#ffffff';
+    btn.style.webkitTextStroke = '0';
     setTimeout(() => {
       btn.innerHTML = 'Find Top Stocks <span class="arrow">→</span>';
       btn.style.background = '';
       btn.style.color = '';
-    }, 4000);
+      btn.style.webkitTextStroke = '';
+    }, 5000);
+  }
+
+  function showError(msg) {
+    const btn = document.querySelector('.submit-btn');
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.innerHTML = '⚠ ' + msg;
+    btn.style.background = 'linear-gradient(135deg, #7a1520, #c23040)';
+    btn.style.color = '#ffffff';
+    btn.style.webkitTextStroke = '0';
+    setTimeout(() => {
+      btn.innerHTML = 'Find Top Stocks <span class="arrow">→</span>';
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.style.webkitTextStroke = '';
+    }, 5000);
   }
 </script>
 </body>
