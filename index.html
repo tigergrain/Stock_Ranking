@@ -687,6 +687,52 @@
     document.querySelectorAll('.sector-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
   }
+
+  // POST to n8n webhook — replace URL below with your actual n8n webhook URL
+  const N8N_WEBHOOK = 'https://rocky51502.n8n-wsk.com/webhook/sector-analysis';
+
+  document.querySelector('.submit-btn').addEventListener('click', function() {
+    const sector = document.querySelector('.sector-btn.active .sector-name')?.textContent || '';
+    const rankBy = document.querySelector('.two-col select:nth-child(1)')?.value || '';
+    const timeframe = document.querySelectorAll('.two-col select')[1]?.value || '';
+    const stockCount = document.getElementById('sliderVal').textContent;
+    const name = document.querySelector('input[type="text"]').value;
+    const email = document.querySelector('input[type="email"]').value;
+
+    if (!name || !email) {
+      alert('Please fill in your name and email.');
+      return;
+    }
+
+    const payload = {
+      sector,
+      rankBy,
+      timeframe,
+      stockCount,
+      name,
+      email
+    };
+
+    fetch(N8N_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(() => showSuccess())
+    .catch(err => console.error('Webhook error:', err));
+  });
+
+  function showSuccess() {
+    const btn = document.querySelector('.submit-btn');
+    btn.textContent = '✓ Analysis Running...';
+    btn.style.background = 'linear-gradient(135deg, #2d9e52, #3dbd62)';
+    btn.style.color = '#ffffff';
+    setTimeout(() => {
+      btn.innerHTML = 'Find Top Stocks <span class="arrow">→</span>';
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 4000);
+  }
 </script>
 </body>
 </html>
