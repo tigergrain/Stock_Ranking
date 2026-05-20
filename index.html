@@ -12,10 +12,10 @@
     --bg: #f0ece4;
     --card-bg: #13131a;
     --card-mid: #1a1a26;
-    --gold: #c9b48a;              /* warm sandy-beige like image 2 */
+    --gold: #c9b48a;
     --teal: #4ecdc4;
     --blue-btn: #2d6fbe;
-    --blue-label: #c9b48a;        /* sandy-beige for subtitles */
+    --blue-label: #c9b48a;
     --text-light: #e8e4dc;
     --text-muted: #8a8a9a;
     --border: rgba(255,255,255,0.08);
@@ -34,7 +34,6 @@
     padding: 60px 20px 80px;
   }
 
-  /* ── HERO ── */
   .hero {
     text-align: center;
     margin-bottom: 48px;
@@ -75,17 +74,7 @@
     color: #13131a;
     margin-bottom: 18px;
   }
-  /* "Find" = dark #13131a (default), "Today" = same dark color */
   .hero h1 .word-today { color: #13131a; }
-  /* "Top" = teal (was used by Today before) */
-  .hero h1 .word-top { color: var(--teal); }
-  /* "Stocks" = gradient like image 1 Dream Career style */
-  .hero h1 .word-stocks {
-    background: linear-gradient(135deg, #b8d4e8 0%, #c9b99a 50%, #d4c5a0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
   .hero h1 .line-topstocks {
     display: block;
     background: linear-gradient(135deg, #2a8a88 0%, #5aab7a 25%, #d4aa3a 60%, #f0cc55 100%);
@@ -103,7 +92,6 @@
     margin: 0 auto;
   }
 
-  /* ── CARD ── */
   .card {
     width: 100%;
     max-width: 980px;
@@ -113,36 +101,26 @@
     box-shadow: 0 40px 120px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.06);
     position: relative;
   }
-  /* wrapper clips the card visually */
   .card-inner {
     border-radius: 28px;
     overflow: hidden;
     position: relative;
   }
-  /* thin shimmer color line at very top */
   .card-top {
     height: 3px;
     background: linear-gradient(90deg, #4ecdc4 0%, #d4aa3a 30%, #f0cc55 50%, #d4aa3a 70%, #4ecdc4 100%);
     background-size: 200% 100%;
     animation: shimmer 4s linear infinite;
   }
-  /* stats-bar with tall deep gradient like image 1 */
   .stats-bar {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     border-bottom: 1px solid var(--border);
     position: relative;
-    background: linear-gradient(180deg,
-      #0e1629 0%,
-      #111828 15%,
-      #121926 30%,
-      #131a27 50%,
-      #13131a 100%
-    );
+    background: linear-gradient(180deg, #0e1629 0%, #111828 15%, #121926 30%, #131a27 50%, #13131a 100%);
     padding-top: 20px;
     padding-bottom: 8px;
   }
-  /* large soft blurry glow that bleeds above card — image 1 effect */
   .stats-bar::before {
     content: '';
     position: absolute;
@@ -150,17 +128,11 @@
     left: -5%;
     width: 110%;
     height: calc(100% + 120px);
-    background: radial-gradient(ellipse 80% 60% at 50% 0%,
-      rgba(30, 50, 110, 0.85) 0%,
-      rgba(20, 35, 80, 0.65) 30%,
-      rgba(15, 20, 50, 0.35) 60%,
-      transparent 100%
-    );
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(30,50,110,0.85) 0%, rgba(20,35,80,0.65) 30%, rgba(15,20,50,0.35) 60%, transparent 100%);
     pointer-events: none;
     z-index: 0;
     filter: blur(18px);
   }
-  /* keep stat content above the blur overlay */
   .stat { position: relative; z-index: 1; }
 
   @keyframes shimmer {
@@ -181,15 +153,11 @@
     font-family: 'Playfair Display', serif;
     font-size: 58px;
     font-weight: 700;
-    color: #c9b48a;   /* warm sandy-beige like image 2 */
+    color: #c9b48a;
     line-height: 1;
     margin-bottom: 6px;
   }
-  /* "Live" word needs to visually match number height */
-  .stat-value.live-val {
-    font-size: 52px;
-    color: #c9b48a;   /* same sandy-beige as numbers */
-  }
+  .stat-value.live-val { font-size: 52px; color: #c9b48a; }
   .stat-label {
     font-size: 11px;
     font-weight: 600;
@@ -198,10 +166,7 @@
     color: var(--text-muted);
   }
 
-  /* form body */
-  .form-body {
-    padding: 44px 52px 52px;
-  }
+  .form-body { padding: 44px 52px 52px; }
 
   .field-label {
     font-size: 13px;
@@ -216,7 +181,6 @@
   }
   .required { color: var(--blue-label); }
 
-  /* sector grid */
   .sector-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -245,17 +209,24 @@
     transform: translateY(-2px);
     color: #ffffff;
   }
+  @keyframes sectorShimmer {
+    0% { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
+  }
+    /* ── Active sector now matches the golden-yellow submit button gradient ── */
   .sector-btn.active {
-    background: linear-gradient(135deg, #9e8a60 0%, #c9b48a 35%, #ddc99e 55%, #c9b48a 75%, #9e8a60 100%);
+    background: linear-gradient(135deg, #b8901e 0%, #d4aa3a 30%, #f0cc55 52%, #d4aa3a 72%, #b8901e 100%);
     background-size: 200% 100%;
-    border-color: rgba(220,200,155,0.85);
-    box-shadow: 0 0 18px rgba(200,180,130,0.4);
+    animation: sectorShimmer 3s linear infinite;
+    border-color: rgba(220,200,80,0.85);
+    box-shadow: 0 0 18px rgba(200,168,75,0.45);
+    color: #13131a;
+  }
+  .sector-btn.active .sector-name {
     color: #ffffff;
+    font-weight: 700;
   }
-  .sector-icon {
-    font-size: 42px;
-    line-height: 1;
-  }
+  .sector-icon { font-size: 42px; line-height: 1; }
   .sector-name {
     font-size: 12px;
     font-weight: 300;
@@ -265,14 +236,12 @@
     color: rgba(255,255,255,0.85);
   }
 
-  /* two-col row */
   .two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
     margin-bottom: 32px;
   }
-
   .field-group { display: flex; flex-direction: column; }
 
   select, input[type="text"], input[type="email"] {
@@ -294,10 +263,7 @@
   select:focus, input:focus { border-color: var(--teal); }
   input::placeholder { color: var(--text-muted); }
 
-  /* slider */
-  .slider-row {
-    margin-bottom: 32px;
-  }
+  .slider-row { margin-bottom: 32px; }
   .slider-header {
     display: flex;
     justify-content: flex-start;
@@ -337,13 +303,8 @@
     justify-content: space-between;
     margin-top: 10px;
   }
-  .slider-ticks span {
-    font-size: 14px;
-    font-weight: 600;
-    color: #c0c0d0;
-  }
+  .slider-ticks span { font-size: 14px; font-weight: 600; color: #c0c0d0; }
 
-  /* signals */
   .signals-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -360,117 +321,54 @@
     gap: 10px;
     text-align: center;
   }
-  .signal-card.buy  {
-    background: linear-gradient(135deg, #1a6b35 0%, #2d9e52 35%, #3dbd62 55%, #2d9e52 75%, #1a6b35 100%);
-    background-size: 200% 100%;
-    border: 1.5px solid rgba(80,210,110,0.85);
-    box-shadow: 0 0 20px rgba(45,158,82,0.35);
-    transition: background-position 0.4s ease, transform 0.2s ease;
-  }
-  .signal-card.sell {
-    background: linear-gradient(135deg, #7a1520 0%, #a82030 35%, #c23040 55%, #a82030 75%, #7a1520 100%);
-    background-size: 200% 100%;
-    border: 1.5px solid rgba(200,80,90,0.85);
-    box-shadow: 0 0 20px rgba(160,40,55,0.35);
-    transition: background-position 0.4s ease, transform 0.2s ease;
-  }
-  .signal-card.hold {
-    background: linear-gradient(135deg, #1a1e2e 0%, #252a3e 35%, #2e3450 55%, #252a3e 75%, #1a1e2e 100%);
-    background-size: 200% 100%;
-    border: 1.5px solid rgba(255,255,255,0.15);
-    box-shadow: 0 0 16px rgba(30,40,80,0.4);
-    transition: background-position 0.4s ease, transform 0.2s ease;
-  }
-  .signal-card.buy:hover  { background-position: 100% 0; transform: translateY(-2px); }
-  .signal-card.sell:hover { background-position: 100% 0; transform: translateY(-2px); }
-  .signal-card.hold:hover { background-position: 100% 0; transform: translateY(-2px); }
-  .signal-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-weight: 700;
-    font-size: 17px;
-  }
-  .signal-dot {
-    width: 14px; height: 14px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .buy .signal-dot  { background: #ffffff; box-shadow: 0 0 10px #ffffff; }
-  .sell .signal-dot { background: #ffffff; box-shadow: 0 0 10px #ffffff; }
-  .hold .signal-dot { background: #ffffff; box-shadow: 0 0 10px #ffffff; }
-  .buy .signal-header  { color: #ffffff; font-size: 17px; }
-  .sell .signal-header { color: #ffffff; font-size: 17px; }
-  .hold .signal-header { color: #ffffff; font-size: 17px; }
+  .signal-card.buy  { background: linear-gradient(135deg, #1a6b35 0%, #2d9e52 35%, #3dbd62 55%, #2d9e52 75%, #1a6b35 100%); background-size: 200% 100%; border: 1.5px solid rgba(80,210,110,0.85); box-shadow: 0 0 20px rgba(45,158,82,0.35); transition: background-position 0.4s ease, transform 0.2s ease; }
+  .signal-card.sell { background: linear-gradient(135deg, #7a1520 0%, #a82030 35%, #c23040 55%, #a82030 75%, #7a1520 100%); background-size: 200% 100%; border: 1.5px solid rgba(200,80,90,0.85); box-shadow: 0 0 20px rgba(160,40,55,0.35); transition: background-position 0.4s ease, transform 0.2s ease; }
+  .signal-card.hold { background: linear-gradient(135deg, #1a1e2e 0%, #252a3e 35%, #2e3450 55%, #252a3e 75%, #1a1e2e 100%); background-size: 200% 100%; border: 1.5px solid rgba(255,255,255,0.15); box-shadow: 0 0 16px rgba(30,40,80,0.4); transition: background-position 0.4s ease, transform 0.2s ease; }
+  .signal-card.buy:hover, .signal-card.sell:hover, .signal-card.hold:hover { background-position: 100% 0; transform: translateY(-2px); }
+  .signal-header { display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; font-size: 17px; }
+  .signal-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; background: #ffffff; box-shadow: 0 0 10px #ffffff; }
+  .buy .signal-header, .sell .signal-header, .hold .signal-header { color: #ffffff; }
   .signal-desc { font-size: 13px; color: #c0c4d4; line-height: 1.6; font-weight: 400; text-align: center; }
 
-  /* divider */
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 36px 0;
-  }
+  .divider { height: 1px; background: var(--border); margin: 36px 0; }
 
-  /* personal info */
   .personal-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
     margin-bottom: 36px;
-  }  .input-wrap {
-    position: relative;
   }
-  .input-icon {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-muted);
-    font-size: 16px;
-    pointer-events: none;
-  }
-  .input-wrap input {
-    padding-left: 44px;
-  }
+  .input-wrap { position: relative; }
+  .input-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 16px; pointer-events: none; }
+  .input-wrap input { padding-left: 44px; }
 
-
-
-  /* submit button — bright golden like image 2 */
   .submit-btn {
     width: 100%;
     padding: 22px;
     background: linear-gradient(135deg, #b8901e 0%, #d4aa3a 30%, #f0cc55 52%, #d4aa3a 72%, #b8901e 100%);
     background-size: 200% 100%;
+    animation: sectorShimmer 3s linear infinite;
     border: none;
     border-radius: 14px;
     font-family: 'Playfair Display', serif;
-    font-size: 26px;
+    font-size: 36px;
     font-weight: 900;
-    letter-spacing: 3px;
-    -webkit-text-stroke: 0.5px #13131a;
-    text-transform: uppercase;
-    color: #13131a;
+    letter-spacing: 1px;
+    -webkit-text-stroke: 0px;
+    text-transform: none;
+    color: #ffffff;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 14px;
   }
-  .submit-btn:hover {
-    background-position: 100% 0;
-    transform: translateY(-2px);
-    box-shadow: 0 14px 48px rgba(200,168,75,0.45);
-  }
+  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 48px rgba(200,168,75,0.45); }
   .submit-btn:active { transform: translateY(0); }
-  .arrow {
-    display: inline-block;
-    transition: transform 0.2s;
-  }
+  .arrow { display: inline-block; transition: transform 0.2s; }
   .submit-btn:hover .arrow { transform: translateX(4px); }
 
-  /* tags — sandy-beige like image 1, evenly spaced */
   .tags {
     display: flex;
     flex-wrap: nowrap;
@@ -481,19 +379,7 @@
     padding: 16px 0 4px;
     width: 100%;
   }
-  .tag {
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    color: #c9b48a;
-    font-size: 15px;
-    font-weight: 400;
-    padding: 4px 28px;
-    display: flex;
-    align-items: center;
-    gap: 0;
-    white-space: nowrap;
-  }
+  .tag { background: transparent; border: none; color: #c9b48a; font-size: 15px; font-weight: 400; padding: 4px 28px; display: flex; align-items: center; white-space: nowrap; }
   .tag::before { content: '•'; color: #c9b48a; margin-right: 8px; }
 
   @media (max-width: 720px) {
@@ -511,26 +397,23 @@
 </head>
 <body>
 
-<!-- HERO -->
 <div class="hero">
   <div class="badge"><span class="badge-dot"></span> StockGPT — AI Stock Analysis</div>
   <h1>Find <span class="word-today">Today's</span><br><span class="line-topstocks">Top Stocks</span></h1>
   <p>Select a sector, set your criteria, and get a ranked list of the best stocks.<br>BUY / SELL / HOLD signals — sent to your Google Sheet instantly.</p>
 </div>
 
-<!-- CARD -->
 <div class="card">
 <div class="card-inner">
   <div class="card-top"></div>
 
-  <!-- STATS -->
   <div class="stats-bar">
     <div class="stat">
-      <div class="stat-value" style="color:#c9b48a; font-variant-numeric: lining-nums tabular-nums;">11</div>
+      <div class="stat-value" style="color:#c9b48a;">11</div>
       <div class="stat-label">Sectors</div>
     </div>
     <div class="stat">
-      <div class="stat-value" style="color:#c9b48a; font-variant-numeric: lining-nums tabular-nums; font-size:50px; letter-spacing:-1px;">3,580+</div>
+      <div class="stat-value" style="color:#c9b48a; font-size:50px; letter-spacing:-1px;">3,580+</div>
       <div class="stat-label">Stocks Tracked</div>
     </div>
     <div class="stat">
@@ -539,10 +422,8 @@
     </div>
   </div>
 
-  <!-- FORM -->
   <div class="form-body">
 
-    <!-- SECTOR -->
     <div class="field-label">Choose Sector <span class="required">*</span></div>
     <div class="sector-grid">
       <button class="sector-btn active" onclick="selectSector(this)">
@@ -591,7 +472,6 @@
       </button>
     </div>
 
-    <!-- RANK BY & TIMEFRAME -->
     <div class="two-col">
       <div class="field-group">
         <div class="field-label">Rank By <span class="required">*</span></div>
@@ -615,7 +495,6 @@
       </div>
     </div>
 
-    <!-- SLIDER -->
     <div class="slider-row">
       <div class="slider-header">
         <span class="slider-label">Number of Stock Ranking</span>
@@ -628,7 +507,6 @@
       </div>
     </div>
 
-    <!-- SIGNALS -->
     <div class="field-label">Stock Signals</div>
     <div class="signals-row">
       <div class="signal-card buy">
@@ -647,7 +525,6 @@
 
     <div class="divider"></div>
 
-    <!-- PERSONAL INFO -->
     <div class="personal-row">
       <div class="field-group">
         <div class="field-label">Your Name <span class="required">*</span></div>
@@ -665,12 +542,10 @@
       </div>
     </div>
 
-    <!-- SUBMIT -->
     <button class="submit-btn">
-      Find Top Stocks <span class="arrow">→</span>
+      Find Stocks Now <span class="arrow">→</span>
     </button>
 
-    <!-- TAGS -->
     <div class="tags">
       <span class="tag">RSI · MACD · SMA signals</span>
       <span class="tag">P/E · EPS · Target price</span>
@@ -684,11 +559,16 @@
 
 <script>
   function selectSector(btn) {
-    document.querySelectorAll('.sector-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.sector-btn').forEach(b => {
+      b.classList.remove('active');
+      b.querySelector('.sector-name').style.color = '';
+      b.querySelector('.sector-name').style.fontWeight = '';
+    });
     btn.classList.add('active');
+    btn.querySelector('.sector-name').style.color = '#ffffff';
+    btn.querySelector('.sector-name').style.fontWeight = '700';
   }
 
-  // POST to n8n webhook — replace URL below with your actual n8n webhook URL
   const N8N_WEBHOOK = 'https://rocky51502.n8n-wsk.com/webhook/sector-analysis';
 
   document.querySelector('.submit-btn').addEventListener('click', function() {
@@ -699,24 +579,18 @@
     const name = document.querySelector('input[type="text"]').value;
     const email = document.querySelector('input[type="email"]').value;
 
-    if (!name || !email) {
-      alert('Please fill in your name and email.');
-      return;
-    }
+    if (!name || !email) { alert('Please fill in your name and email.'); return; }
 
     const btn = document.querySelector('.submit-btn');
     btn.innerHTML = '⏳ Sending...';
     btn.disabled = true;
     btn.style.opacity = '0.8';
 
-    const payload = { sector, rankBy, timeframe, stockCount, name, email };
-
-    // Try normal fetch first, fallback to no-cors for CORS issues
     fetch(N8N_WEBHOOK, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({ sector, rankBy, timeframe, stockCount, name, email })
     })
     .then(() => showSuccess())
     .catch(() => showError('Connection failed. Please check n8n is active.'));
@@ -724,34 +598,20 @@
 
   function showSuccess() {
     const btn = document.querySelector('.submit-btn');
-    btn.disabled = false;
-    btn.style.opacity = '1';
+    btn.disabled = false; btn.style.opacity = '1';
     btn.innerHTML = '✓ Analysis Running — Check Your Email!';
     btn.style.background = 'linear-gradient(135deg, #1a6b35, #2d9e52, #3dbd62)';
-    btn.style.color = '#ffffff';
-    btn.style.webkitTextStroke = '0';
-    setTimeout(() => {
-      btn.innerHTML = 'Find Top Stocks <span class="arrow">→</span>';
-      btn.style.background = '';
-      btn.style.color = '';
-      btn.style.webkitTextStroke = '';
-    }, 5000);
+    btn.style.color = '#ffffff'; btn.style.webkitTextStroke = '0';
+    setTimeout(() => { btn.innerHTML = 'Find Stocks Now <span class="arrow">→</span>'; btn.style.background = ''; btn.style.color = ''; btn.style.webkitTextStroke = ''; }, 5000);
   }
 
   function showError(msg) {
     const btn = document.querySelector('.submit-btn');
-    btn.disabled = false;
-    btn.style.opacity = '1';
+    btn.disabled = false; btn.style.opacity = '1';
     btn.innerHTML = '⚠ ' + msg;
     btn.style.background = 'linear-gradient(135deg, #7a1520, #c23040)';
-    btn.style.color = '#ffffff';
-    btn.style.webkitTextStroke = '0';
-    setTimeout(() => {
-      btn.innerHTML = 'Find Top Stocks <span class="arrow">→</span>';
-      btn.style.background = '';
-      btn.style.color = '';
-      btn.style.webkitTextStroke = '';
-    }, 5000);
+    btn.style.color = '#ffffff'; btn.style.webkitTextStroke = '0';
+    setTimeout(() => { btn.innerHTML = 'Find Stocks Now <span class="arrow">→</span>'; btn.style.background = ''; btn.style.color = ''; btn.style.webkitTextStroke = ''; }, 5000);
   }
 </script>
 </body>
