@@ -213,7 +213,6 @@
     0% { background-position: 0% 0; }
     100% { background-position: 200% 0; }
   }
-    /* ── Active sector now matches the golden-yellow submit button gradient ── */
   .sector-btn.active {
     background: linear-gradient(135deg, #b8901e 0%, #d4aa3a 30%, #f0cc55 52%, #d4aa3a 72%, #b8901e 100%);
     background-size: 200% 100%;
@@ -263,48 +262,6 @@
   select:focus, input:focus { border-color: var(--teal); }
   input::placeholder { color: var(--text-muted); }
 
-  .slider-row { margin-bottom: 32px; }
-  .slider-header {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 14px;
-  }
-  .slider-label {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-  .slider-value {
-    background: #d4aa3a;
-    color: #13131a;
-    font-weight: 700;
-    font-size: 14px;
-    padding: 3px 12px;
-    border-radius: 6px;
-    min-width: 32px;
-    text-align: center;
-  }
-  input[type="range"] {
-    width: 100%;
-    height: 4px;
-    border-radius: 4px;
-    background: rgba(255,255,255,0.1);
-    accent-color: #d4aa3a;
-    cursor: pointer;
-    border: none;
-    padding: 0;
-  }
-  .slider-ticks {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  .slider-ticks span { font-size: 14px; font-weight: 600; color: #c0c0d0; }
-
   .signals-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -323,6 +280,7 @@
   }
   .signal-card.buy  { background: linear-gradient(135deg, #1a6b35 0%, #2d9e52 35%, #3dbd62 55%, #2d9e52 75%, #1a6b35 100%); background-size: 200% 100%; border: 1.5px solid rgba(80,210,110,0.85); box-shadow: 0 0 20px rgba(45,158,82,0.35); transition: background-position 0.4s ease, transform 0.2s ease; }
   .signal-card.sell { background: linear-gradient(135deg, #7a1520 0%, #a82030 35%, #c23040 55%, #a82030 75%, #7a1520 100%); background-size: 200% 100%; border: 1.5px solid rgba(200,80,90,0.85); box-shadow: 0 0 20px rgba(160,40,55,0.35); transition: background-position 0.4s ease, transform 0.2s ease; }
+  .signal-card.hold { background: linear-gradient(135deg, #1a1e2e 0%, #252a3e 35%, #2e3450 55%, #252a3e 75%, #1a1e2e 100%); background-size: 200% 100%; border: 1.5px solid rgba(255,255,255,0.15); box-shadow: 0 0 16px rgba(30,40,80,0.4); transition: background-position 0.4s ease, transform 0.2s ease; }
   .signal-card.hold { background: linear-gradient(135deg, #1a1e2e 0%, #252a3e 35%, #2e3450 55%, #252a3e 75%, #1a1e2e 100%); background-size: 200% 100%; border: 1.5px solid rgba(255,255,255,0.15); box-shadow: 0 0 16px rgba(30,40,80,0.4); transition: background-position 0.4s ease, transform 0.2s ease; }
   .signal-card.buy:hover, .signal-card.sell:hover, .signal-card.hold:hover { background-position: 100% 0; transform: translateY(-2px); }
   .signal-header { display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; font-size: 17px; }
@@ -354,7 +312,6 @@
     font-size: 36px;
     font-weight: 900;
     letter-spacing: 1px;
-    -webkit-text-stroke: 0px;
     text-transform: none;
     color: #ffffff;
     cursor: pointer;
@@ -495,17 +452,8 @@
       </div>
     </div>
 
-    <div class="slider-row">
-      <div class="slider-header">
-        <span class="slider-label">Number of Stock Ranking</span>
-        <span class="slider-value" id="sliderVal">10</span>
-      </div>
-      <input type="range" min="5" max="20" value="10" id="stockSlider"
-        oninput="document.getElementById('sliderVal').textContent=this.value">
-      <div class="slider-ticks">
-        <span>5</span><span>10</span><span>15</span><span>20</span>
-      </div>
-    </div>
+    <!-- topN hardcoded to 1 for free version -->
+    <input type="hidden" id="topNInput" value="1">
 
     <div class="field-label">Stock Signals</div>
     <div class="signals-row">
@@ -575,7 +523,7 @@
     const sector = document.querySelector('.sector-btn.active .sector-name')?.textContent || '';
     const rankBy = document.querySelectorAll('.two-col select')[0]?.value || '';
     const timeframe = document.querySelectorAll('.two-col select')[1]?.value || '';
-    const stockCount = document.getElementById('sliderVal').textContent;
+    const stockCount = document.getElementById('topNInput').value;
     const name = document.querySelector('input[type="text"]').value;
     const email = document.querySelector('input[type="email"]').value;
 
