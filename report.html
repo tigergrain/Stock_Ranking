@@ -266,14 +266,14 @@ function renderReport(rows) {
     `${r0.name}  ·  ${new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}  ·  Timeframe: ${r0.timeframe}  ·  Top ${r0.topN} picks`;
 
   // ── Summary metrics ────────────────────────────────────────────────────────
-  const buyCount  = rows.filter(r => String(r.signal).toUpperCase()==='BUY').length;
+  const buyCount  = rows.filter(r => String(r.signal).toUpperCase().includes('BUY')).length;
   const sellCount = rows.filter(r => String(r.signal).toUpperCase()==='SELL').length;
   const bestPick  = rows.reduce((a,b) => Number(a.pctChange) > Number(b.pctChange) ? a : b);
   const avgConf   = Math.round(rows.reduce((s,r) => s + Number(r.confidence||100), 0) / rows.length);
   document.getElementById('summary-metrics').innerHTML = `
     <div class="metric-card"><div class="metric-label">Best pick</div><div class="metric-value">${bestPick.ticker}</div><div class="metric-sub positive">${fmtPct(bestPick.pctChange)}</div></div>
     <div class="metric-card"><div class="metric-label">Avg confidence</div><div class="metric-value">${avgConf}%</div><div class="metric-sub" style="color:#888">All signals</div></div>
-    <div class="metric-card"><div class="metric-label">BUY signals</div><div class="metric-value">${buyCount} / ${rows.length}</div><div class="metric-sub positive">${rows.filter(r=>String(r.signal).toUpperCase()==='BUY').map(r=>r.ticker).join(' · ')}</div></div>
+    <div class="metric-card"><div class="metric-label">BUY signals</div><div class="metric-value">${buyCount} / ${rows.length}</div><div class="metric-sub positive">${rows.filter(r=>String(r.signal).toUpperCase().includes('BUY')).map(r=>r.ticker).join(' · ')}</div></div>
     <div class="metric-card"><div class="metric-label">SELL signals</div><div class="metric-value">${sellCount} / ${rows.length}</div><div class="metric-sub negative">${rows.filter(r=>String(r.signal).toUpperCase()==='SELL').map(r=>r.ticker).join(' · ') || '—'}</div></div>
   `;
 
